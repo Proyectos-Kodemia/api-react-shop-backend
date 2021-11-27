@@ -1,0 +1,25 @@
+{
+  "name": "react-shop-backend",
+  "version": "1.0.0",
+  "description": "api for react shop challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Proyectos-Kodemia/api-react-shop-backend.git"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "npm",
+    "react"
+  ],
+  "author": "@Miguel-contreras-izquierdo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Proyectos-Kodemia/api-react-shop-backend/issues"
+  },
+  "homepage": "https://github.com/Proyectos-Kodemia/api-react-shop-backend#readme"
+}
