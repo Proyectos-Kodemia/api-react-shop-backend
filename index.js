@@ -4,7 +4,7 @@ const port = 8000
 const apiRouter = require("./routes/index")
 
 // Importando los modulos de middleware de erroes
-const {logErrors, errorHandler} = require("./middlewares/errorHandler")
+const {logErrors, errorHandler} = require("./middlewares/errorHandlers")
 
 
 

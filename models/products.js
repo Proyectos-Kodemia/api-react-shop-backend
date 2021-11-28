@@ -36,9 +36,17 @@ const schema = new Schema({
         type:Number,
         required:true,
     },
+    userName: {
+        type: String,
+    },
+    idAuthor: {
+        type: String,
+        required:false,
+    },
+
 })
 
 module.exports ={
-    model:mongoose.model("Post",schema),
+    model:mongoose.model("Products",schema),
     schema,
 }
