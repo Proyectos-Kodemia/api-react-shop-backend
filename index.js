@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const port = 8000
+const port = process.env.PORT
 const apiRouter = require("./routes/index")
 const cors = require('cors');
 
@@ -15,7 +15,7 @@ const db = require("./lib/db")
 
 // Muestra la información en formato json, parsea todoe el contenido JSON
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: '*'
 }));
 
 app.use(express.json())
