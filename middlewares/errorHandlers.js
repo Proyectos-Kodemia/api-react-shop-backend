@@ -4,7 +4,7 @@ const logErrors = (error, request, response, next)=>{
 }
 
 const errorHandler = (error,request, response) =>{
-    console.log("****ERROR,", error)
+    console.log("****ERROR,", error.message)
     response.status(500).json({
         message:error.message,
         stack:error.stack,
