@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
-const port = 8000
+const config = require("./lib/config")
+const port = config.app.port
 const apiRouter = require("./routes/index")
 const cors = require('cors');
 
@@ -15,7 +16,7 @@ const db = require("./lib/db")
 
 // Muestra la información en formato json, parsea todoe el contenido JSON
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: '*'
 }));
 
 app.use(express.json())
@@ -26,8 +27,8 @@ app.use(express.json())
 apiRouter(app)
 
 // Usando los modulos de middleware de errores/ el orden es importante, en ese orden se alinearan los middleware
-app.use(logErrors)
-app.use(errorHandler)
+// app.use(logErrors)
+// app.use(errorHandler)
 
 
 // Levantando la DB Mongo
