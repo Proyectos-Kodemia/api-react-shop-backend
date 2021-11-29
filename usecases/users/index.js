@@ -37,7 +37,7 @@ const authenticate = async (user, password) => {
 
 // Proceso LogIn de usuarios
 const logIn = async(username,password)=>{
-    
+    console.log(username)
     const userObject = await getByUser({username})
     console.log("userOBject:",userObject)
     const hash = userObject.password

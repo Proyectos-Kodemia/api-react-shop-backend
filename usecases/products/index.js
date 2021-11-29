@@ -3,8 +3,8 @@ const encrypt = require("../../lib/crypt");
 const jwt = require("../../lib/jwt");
 
 const create=async (dataProduct,userName,idAuthor)=>{
-    const {title,like,image,type,price} = dataProduct
-    const product =new Product.model ({title,like,image,type,price,userName,idAuthor});
+    const {description,like,image,type,price} = dataProduct
+    const product =new Product.model ({description,like,image,type,price,userName,idAuthor});
     const savedProduct=await product.save();
     return savedProduct;
 };
@@ -38,6 +38,11 @@ const get = async (search,date) => {
 // incluir parametros search y date
 };
 
+const getByType = async(type)=>{
+    return Product.model.find({type:type}).exec();
+}
+
+
 const getById = async (idProduct) => {
     return await Product.model.findById(idProduct).exec();
 };
@@ -58,6 +63,7 @@ module.exports ={
     create,
     get,
     getById,
+    getByType,
     del,
     update,
 }

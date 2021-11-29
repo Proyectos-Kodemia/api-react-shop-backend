@@ -2,8 +2,7 @@ const mongoose = require("mongoose")
 const {Schema} = mongoose
 
 const schema = new Schema({
-   
-    title:{
+    description:{
         type:String,
         required:true,
         trim:true,
@@ -23,7 +22,7 @@ const schema = new Schema({
         trim:true,
         minlength:1,
         unique:true,
-
+    
     },
     type:{
         type:String,
@@ -47,6 +46,6 @@ const schema = new Schema({
 })
 
 module.exports ={
-    model:mongoose.model("Products",schema),
+    model:mongoose.model("Product",schema),
     schema,
 }

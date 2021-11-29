@@ -2,6 +2,8 @@ const express = require("express")
 const app = express()
 const port = 8000
 const apiRouter = require("./routes/index")
+const cors = require('cors');
+
 
 // Importando los modulos de middleware de erroes
 const {logErrors, errorHandler} = require("./middlewares/errorHandlers")
@@ -12,7 +14,12 @@ const {logErrors, errorHandler} = require("./middlewares/errorHandlers")
 const db = require("./lib/db")
 
 // Muestra la información en formato json, parsea todoe el contenido JSON
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
+
 app.use(express.json())
+
 
 // Enviando al index de las rutas
 

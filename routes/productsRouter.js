@@ -28,6 +28,9 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+
+
+
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -37,7 +40,7 @@ router.get("/:id", async (req, res, next) => {
         ok: true,
         message: `Product {id} retrieved`,
         payload: {
-          postId,
+          productId,
         },
       });
     } else {
@@ -55,24 +58,64 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.use(authHandler);
+router.get("/type/:type", async (req, res, next) => {
+  const {type} = req.params;
+  
+  try {
+    const productType = await product.getByType(type);
+    if (productType) {
+      res.status(200).json({
+        ok: true,
+        message: `Product {type} retrieved`,
+        payload: {
+          productType,
+        },
+      });
+    } else {
+      res.status(404).json({
+        ok: false,
+        message: `Product type not found`,
+        payload: {
+          productType,
+        },
+      });
+    }
+  } catch (err) {
+    next(err);
+    console.log(err);
+  }
+});
+
+
+
+
+
+
+
+// router.use(authHandler);
 
 router.post("/", async (req, res, next) => {
 
     const {token} = req.headers
     
-    const productPost = req.body
+    const dataProduct = req.body
 
-    const payload = await jwt.verifyToken(token)
+    // const payload = await jwt.verifyToken(token)
     
-    const {sub} = payload
+    // const {sub} = payload
     // Trayendo información de creador product
-    const userObject = await user.getById(sub)    
-    const userName = userObject.username
-    
+    // const userObject = await user.getById(sub)    
+    // const userName = userObject.username
+
+
+    // Checar authentication hardcore
+    const userName="admin"
+    const sub="admin"
+    ///////////
+
     try {
         
-       const productCreated = await product.create(dataPost,userName,sub)
+       const productCreated = await product.create(dataProduct,userName,sub)
        res.status(200).json({
         status:true, 
         message:" Product created succesfully",
