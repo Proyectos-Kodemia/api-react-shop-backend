@@ -27,8 +27,8 @@ app.use(express.json())
 apiRouter(app)
 
 // Usando los modulos de middleware de errores/ el orden es importante, en ese orden se alinearan los middleware
-app.use(logErrors)
-app.use(errorHandler)
+// app.use(logErrors)
+// app.use(errorHandler)
 
 
 // Levantando la DB Mongo
