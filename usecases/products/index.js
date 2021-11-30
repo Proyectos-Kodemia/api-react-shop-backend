@@ -16,19 +16,17 @@ const create=async (dataProduct,userName,idAuthor)=>{
 
 const get = async (search,date) => {
     let resp
-    if(search){
+    if(search>0){
         // console.log("get user case:",search)
         // .find({ $or: [ ] })
         // {title:{ $regex:search}}
         // let regx=`/${search}/ig`
         // resp = await Post.model.find({$or:[{userName:{$regex:regx}},{title:{$regex:regx}},{tags:{$regex:regx}},{textContainer:{$regex:regx}}]}).exec();
-        resp = await Product.model.find({$or:[{userName:{$regex:search}},{title:{$regex:search}},{tags:{$regex:search}},{textContainer:{$regex:search}}]}).exec();
-    }else if(date){
+        resp=await Product.model.find({price:search}).exec();
         
-        const dateInit = new Date(date)
-        const dateLast = dateInit.setMinutes(dateInit.getMinutes()+1440)
-        console.log("datelast",dateLast)
-        resp=await Product.model.find({dateCreation:{ $gte: date, $lte: dateLast }}).exec();
+    }else if(search){
+        resp = await Product.model.find({$or:[{description:{$regex:search}},{type:{$regex:search}}]}).exec();
+        
         
     }else{
         resp=await Product.model.find({}).exec();
